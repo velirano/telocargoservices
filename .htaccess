@@ -1,0 +1,22 @@
+# Telo Cargo Services — redirections SEO (OVHcloud / Apache)
+Options -Indexes
+RewriteEngine On
+
+# 1) Forcer HTTPS (OVH : test du port pour éviter les boucles derrière le proxy)
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://telocargoservices.com/$1 [R=301,L]
+
+# 2) www -> domaine sans www (URL canonique)
+RewriteCond %{HTTP_HOST} ^www\.telocargoservices\.com$ [NC]
+RewriteRule ^(.*)$ https://telocargoservices.com/$1 [R=301,L]
+
+# 3) Anciennes pages Wix encore indexées -> sections de la page unique
+RewriteRule ^about(-[0-9]+)?/?$ /#apropos [R=301,NE,L]
+RewriteRule ^(services|service-page|nos-services)(/.*)?$ /#services [R=301,NE,L]
+RewriteRule ^(contact|contact-[0-9]+|devis)/?$ /#devis [R=301,NE,L]
+RewriteRule ^(index\.html?|home|accueil)$ / [R=301,L]
+
+# 4) Toute autre ancienne URL inexistante -> accueil
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.+$ / [R=301,L]
