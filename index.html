@@ -536,7 +536,7 @@ form.card > p{color:var(--muted);font-size:15px;margin-bottom:22px}
 .modes input:checked + span{background:var(--navy);border-color:var(--orange);color:#fff;box-shadow:0 0 0 2px rgba(255,122,61,.25)}
 .modes input:focus-visible + span{outline:2px solid var(--blue);outline-offset:2px}
 form.card .btn{width:100%;justify-content:center;margin-top:8px}
-.form-ok{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#e8f8ee;color:#1d6b3b;font-size:15px}
+.form-err{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#fdecea;color:#9b2c1f;font-size:15px}.form-err a{color:inherit;text-decoration:underline}.form-ok{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#e8f8ee;color:#1d6b3b;font-size:15px}
 
 /* Footer */
 footer{background:var(--night);color:rgba(220,230,245,.7);padding:70px 0 30px;font-size:15.5px;border-top:1px solid rgba(169,208,255,.12)}
@@ -947,6 +947,7 @@ footer a:hover{color:var(--ice)}
     </div>
 
     <form class="card reveal d1" id="quoteForm" novalidate>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <h3>Obtenir un devis</h3>
       <p>Réponse de notre équipe commerciale par e-mail.</p>
       <div class="row">
@@ -968,7 +969,8 @@ footer a:hover{color:var(--ice)}
       </div>
       <div class="field"><label for="f-msg">Votre besoin</label><textarea id="f-msg" name="message" placeholder="Origine, destination, type et volume de marchandise…"></textarea></div>
       <button class="btn btn-primary" type="submit">Envoyer ma demande <svg><use href="#i-arrow"/></svg></button>
-      <div class="form-ok" id="formOk">Merci pour votre envoi ! Votre messagerie va s'ouvrir pour finaliser l'envoi.</div>
+      <div class="form-err" id="formErr">Désolé, l'envoi n'a pas abouti. Écrivez-nous à <a href="mailto:sales@telocargoservices.com">sales@telocargoservices.com</a> ou appelez le <a href="tel:+261341131104">+261 34 11 311 04</a>.</div>
+      <div class="form-ok" id="formOk">Merci ! Votre demande a bien été envoyée. Notre équipe vous répond rapidement.</div>
     </form>
   </div>
 </section>
@@ -1048,10 +1050,14 @@ document.getElementById('quoteForm').addEventListener('submit',e=>{
   const f=e.target;
   if(!f.nom.value.trim()||!f.email.checkValidity()){f.reportValidity();(f.nom.value.trim()?f.email:f.nom).focus();return}
   const modes=[...f.querySelectorAll('[name=mode]:checked')].map(i=>i.value).join(', ')||'—';
-  const body=`Nom : ${f.nom.value}\nEntreprise : ${f.entreprise.value}\nE-mail : ${f.email.value}\nTéléphone : ${f.tel.value}\nMode(s) : ${modes}\n\n${f.message.value}`;
-  document.getElementById('formOk').style.display='block';
-  location.href='mailto:sales@telocargoservices.com?subject='+encodeURIComponent('Demande de devis — '+f.nom.value)+'&body='+encodeURIComponent(body);
+  const btn=f.querySelector('button[type=submit]'),ok=document.getElementById('formOk'),er=document.getElementById('formErr'),label=btn.innerHTML;
+  const fd=new FormData(f);fd.delete('mode');fd.append('modes',modes);fd.append('lang','fr');fd.append('ts',f.dataset.t||'0');
+  ok.style.display='none';er.style.display='none';btn.disabled=true;btn.textContent='Envoi en cours…';
+  fetch('/contact.php',{method:'POST',body:fd}).then(r=>r.json().catch(()=>({ok:false}))).then(j=>{
+    if(j&&j.ok){ok.style.display='block';f.reset();}else{er.style.display='block';}
+  }).catch(()=>{er.style.display='block';}).finally(()=>{btn.disabled=false;btn.innerHTML=label;});
 });
+document.getElementById('quoteForm').dataset.t=Date.now();
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
