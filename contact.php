@@ -1,5 +1,5 @@
 <?php
-// Telo Cargo Services – envoi du formulaire de devis par e-mail (hébergement OVH)
+// Telo Cargo Services – envoi du formulaire de devis par e-mail (hébergement OVH) – v2
 date_default_timezone_set('Indian/Antananarivo');
 header('Content-Type: application/json; charset=utf-8');
 header('X-Robots-Tag: noindex');
