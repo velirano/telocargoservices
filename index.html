@@ -953,7 +953,10 @@ footer a:hover{color:var(--ice)}
         <div class="field"><label for="f-nom">Nom</label><input id="f-nom" name="nom" required autocomplete="name"></div>
         <div class="field"><label for="f-ent">Entreprise</label><input id="f-ent" name="entreprise" autocomplete="organization"></div>
       </div>
-      <div class="field"><label for="f-mail">E-mail</label><input id="f-mail" type="email" name="email" required autocomplete="email"></div>
+      <div class="row">
+        <div class="field"><label for="f-mail">E-mail</label><input id="f-mail" type="email" name="email" required autocomplete="email"></div>
+        <div class="field"><label for="f-tel">Téléphone</label><input id="f-tel" type="tel" name="tel" autocomplete="tel" inputmode="tel" placeholder="+261 34 00 000 00"></div>
+      </div>
       <div class="field">
         <label>Mode de transport</label>
         <div class="modes">
@@ -1045,7 +1048,7 @@ document.getElementById('quoteForm').addEventListener('submit',e=>{
   const f=e.target;
   if(!f.nom.value.trim()||!f.email.checkValidity()){f.reportValidity();(f.nom.value.trim()?f.email:f.nom).focus();return}
   const modes=[...f.querySelectorAll('[name=mode]:checked')].map(i=>i.value).join(', ')||'—';
-  const body=`Nom : ${f.nom.value}\nEntreprise : ${f.entreprise.value}\nE-mail : ${f.email.value}\nMode(s) : ${modes}\n\n${f.message.value}`;
+  const body=`Nom : ${f.nom.value}\nEntreprise : ${f.entreprise.value}\nE-mail : ${f.email.value}\nTéléphone : ${f.tel.value}\nMode(s) : ${modes}\n\n${f.message.value}`;
   document.getElementById('formOk').style.display='block';
   location.href='mailto:sales@telocargoservices.com?subject='+encodeURIComponent('Demande de devis — '+f.nom.value)+'&body='+encodeURIComponent(body);
 });
