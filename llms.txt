@@ -16,3 +16,23 @@
 ## Pages
 - [Accueil et services](https://telocargoservices.com/): présentation, services, agréments CAD/MAD, FAQ et demande de devis
 - [English version](https://telocargoservices.com/en/): freight forwarder and licensed customs broker (CAD) in Madagascar, bonded warehouse and clearance area (MAD) — services, licences, FAQ and quote request
+
+## Pages de services et guides (FR)
+- [Dédouanement](https://telocargoservices.com/dedouanement-madagascar/): Commissionnaire agréé en douane (CAD) à Madagascar : dédouanement import et export à Antananarivo (Ivato) et Toamasina, de la déclaration à la mainlevée. Devis rapide.
+- [Fret maritime](https://telocargoservices.com/fret-maritime-madagascar/): Fret maritime import-export vers et depuis Madagascar via le port de Toamasina : conteneur complet (FCL), groupage (LCL), dédouanement et livraison. Agence à Toamasina.
+- [Fret aérien](https://telocargoservices.com/fret-aerien-madagascar/): Fret aérien vers et depuis Madagascar à l'aéroport d'Ivato (TNR) : envois urgents, dédouanement sur place dans notre magasin sous douane agréé (MAD), livraison.
+- [Groupage aérien](https://telocargoservices.com/groupage-aerien-madagascar/): Transitaires : confiez vos consolidations aériennes vers Madagascar à TCS. Réception sous douane à Ivato (TNR), dégroupage par HAWB, dédouanement et livraison.
+- [Agence d'Antananarivo](https://telocargoservices.com/transitaire-antananarivo/): Transitaire et commissionnaire agréé en douane à Antananarivo : agence Rue Joseph Raseta, Mamory Ivato, près de l'aéroport. Fret aérien, douane, MAD, livraison.
+- [Agence de Toamasina](https://telocargoservices.com/transitaire-toamasina/): Transitaire et commissionnaire agréé en douane à Toamasina (Tamatave) : agence Rue du Commerce, Ampasimazava. Fret maritime, dédouanement au port, livraison.
+- [Guide : importer](https://telocargoservices.com/guide-importer-a-madagascar/): Comment importer une marchandise à Madagascar : choix du transport, documents, dédouanement, droits et taxes, livraison. Le guide d'un commissionnaire agréé en douane.
+- [Guide : exporter](https://telocargoservices.com/guide-exporter-depuis-madagascar/): Exporter depuis Madagascar sans blocage : documents commerciaux, certificats (phytosanitaire, sanitaire, origine), déclaration d'export, embarquement à Toamasina ou Ivato.
+
+## Service pages and guides (EN)
+- [Customs clearance](https://telocargoservices.com/en/customs-clearance-madagascar/): Licensed customs broker (CAD) in Madagascar: import and export customs clearance in Antananarivo (Ivato) and Toamasina, from declaration to release. Fast quotes.
+- [Ocean freight](https://telocargoservices.com/en/ocean-freight-madagascar/): Import-export ocean freight to and from Madagascar through the port of Toamasina: full container (FCL), groupage (LCL), customs clearance and delivery. Office in Toamasina.
+- [Air freight](https://telocargoservices.com/en/air-freight-madagascar/): Air freight to and from Madagascar at Ivato airport (TNR): urgent shipments, on-site customs clearance in our licensed bonded warehouse (MAD), delivery.
+- [Air consolidation](https://telocargoservices.com/en/air-consolidation-madagascar/): Forwarders: entrust your air consolidations to Madagascar to TCS. Bonded receipt at Ivato (TNR), breakdown per HAWB, customs clearance and delivery.
+- [Antananarivo office](https://telocargoservices.com/en/freight-forwarder-antananarivo/): Freight forwarder and licensed customs broker in Antananarivo: office at Rue Joseph Raseta, Mamory Ivato, near the airport. Air freight, customs, MAD, delivery.
+- [Toamasina office](https://telocargoservices.com/en/freight-forwarder-toamasina/): Freight forwarder and licensed customs broker in Toamasina (Tamatave): office at Rue du Commerce, Ampasimazava. Ocean freight, port customs clearance, delivery.
+- [Guide: importing](https://telocargoservices.com/en/guide-importing-to-madagascar/): How to import goods into Madagascar: choosing transport, documents, customs clearance, duties and taxes, delivery. A guide from a licensed customs broker.
+- [Guide: exporting](https://telocargoservices.com/en/guide-exporting-from-madagascar/): Export from Madagascar without hold-ups: commercial documents, certificates (phytosanitary, health, origin), export declaration, loading in Toamasina or Ivato.

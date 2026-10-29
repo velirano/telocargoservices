@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://telocargoservices.com/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/"/>
@@ -11,11 +11,155 @@
   </url>
   <url>
     <loc>https://telocargoservices.com/en/</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/dedouanement-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/dedouanement-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/customs-clearance-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/customs-clearance-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/customs-clearance-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/dedouanement-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/customs-clearance-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/customs-clearance-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/fret-maritime-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/fret-maritime-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/ocean-freight-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/ocean-freight-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/ocean-freight-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/fret-maritime-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/ocean-freight-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/ocean-freight-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/fret-aerien-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/fret-aerien-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/air-freight-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/air-freight-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/air-freight-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/fret-aerien-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/air-freight-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/air-freight-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/groupage-aerien-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/groupage-aerien-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/air-consolidation-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/air-consolidation-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/air-consolidation-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/groupage-aerien-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/air-consolidation-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/air-consolidation-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/transitaire-antananarivo/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/transitaire-antananarivo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/freight-forwarder-antananarivo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/freight-forwarder-antananarivo/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/freight-forwarder-antananarivo/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/transitaire-antananarivo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/freight-forwarder-antananarivo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/freight-forwarder-antananarivo/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/transitaire-toamasina/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/transitaire-toamasina/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/freight-forwarder-toamasina/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/freight-forwarder-toamasina/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/freight-forwarder-toamasina/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/transitaire-toamasina/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/freight-forwarder-toamasina/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/freight-forwarder-toamasina/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/guide-importer-a-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/guide-importer-a-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/guide-importing-to-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/guide-importing-to-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/guide-importing-to-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/guide-importer-a-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/guide-importing-to-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/guide-importing-to-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/guide-exporter-depuis-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/guide-exporter-depuis-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/guide-exporting-from-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/guide-exporting-from-madagascar/"/>
+  </url>
+  <url>
+    <loc>https://telocargoservices.com/en/guide-exporting-from-madagascar/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://telocargoservices.com/guide-exporter-depuis-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/guide-exporting-from-madagascar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/guide-exporting-from-madagascar/"/>
   </url>
 </urlset>
