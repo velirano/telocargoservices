@@ -20,95 +20,421 @@
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#070b18">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--night:#070b18;--navy:#0f1f45;--deep:#14306a;--blue:#2468d6;--orange:#ff7a3d;--orange-2:#f05a24;--ice:#a9d0ff;--ink:#0f1630;--muted:#56607a;--line:#e3e8f1;--soft:#f4f7fc}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:clip}
-a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
-h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif;line-height:1.2;letter-spacing:-.01em}
-.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
-header{position:sticky;top:0;z-index:50;background:rgba(7,11,24,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
-.logo img{height:44px;width:auto}
+:root{
+  --night:#070b18; --night-2:#0b1226; --navy:#0f1f45; --deep:#14306a;
+  --blue:#2468d6; --orange:#ff7a3d; --orange-2:#f05a24; --glow:#4da3ff; --ice:#a9d0ff;
+  --silver:linear-gradient(180deg,#ffffff 0%,#dfe6ef 35%,#9fb0c6 62%,#e9eef5 100%);
+  --ink:#0f1630; --muted:#56607a; --line:#e3e8f1; --bg:#ffffff; --soft:#f4f7fc;
+  --r:18px; --shadow:0 22px 50px -22px rgba(7,11,24,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{overflow-x:clip;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:Montserrat,Inter,sans-serif;line-height:1.15;letter-spacing:-.015em}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font:500 13px/1 Montserrat,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--blue)}
+.eyebrow::before{content:"";width:34px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--orange))}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;font:600 15px/1 Montserrat,sans-serif;letter-spacing:.02em;border:1.5px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .25s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;box-shadow:0 10px 30px -10px rgba(255,122,61,.75),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-primary:hover{box-shadow:0 14px 40px -8px rgba(255,122,61,.9),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn-ghost{border-color:rgba(200,215,235,.45);color:#fff;background:rgba(255,255,255,.04)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn svg{width:18px;height:18px}
+.silver{background:var(--silver);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* bokeh réutilisable */
+.bokeh{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.bokeh i{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(90,160,255,.55),rgba(90,160,255,0) 70%);animation:float 14s ease-in-out infinite alternate}
+@keyframes float{to{transform:translate(18px,-26px) scale(1.15);opacity:.55}}
+
+/* ---------- Header ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:20px 0}
+header.scrolled{background:rgba(7,11,24,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.06);padding:10px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo img{height:46px;width:auto;filter:drop-shadow(0 2px 10px rgba(77,163,255,.25))}
+header.scrolled .logo img{height:40px}
 .menu{display:flex;align-items:center;gap:4px;list-style:none}
-.menu a{padding:9px 14px;border-radius:999px;font:500 14px/1 Montserrat,sans-serif;color:rgba(255,255,255,.85)}
-.menu a:hover{background:rgba(255,255,255,.08);color:#fff}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font:600 15px/1 Montserrat,sans-serif;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff!important;box-shadow:0 10px 30px -10px rgba(255,122,61,.75)}
-.menu .lang{display:flex;gap:2px;margin-left:6px;padding:3px;border:1px solid rgba(255,255,255,.18);border-radius:999px}
-.menu .lang a{padding:7px 10px;font-size:12px;color:rgba(255,255,255,.6)}.menu .lang a.on{color:#fff;background:rgba(255,255,255,.14)}
-.burger{display:none;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
-.hero{background:radial-gradient(900px 400px at 10% 0%,#1d3f8f 0%,transparent 60%),linear-gradient(180deg,#0b1226,#070b18);color:#fff;padding:56px 0 64px}
-.crumbs{font-size:13.5px;color:rgba(220,232,248,.7);margin-bottom:18px}.crumbs a{text-decoration:underline;text-underline-offset:3px}
-.eyebrow{display:inline-flex;align-items:center;gap:12px;font:600 12.5px/1 Montserrat,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--ice)}
-.eyebrow::before{content:"";width:30px;height:2px;background:linear-gradient(90deg,transparent,var(--orange))}
-.hero h1{font-size:clamp(30px,4.4vw,50px);font-weight:700;margin:16px 0 18px;max-width:20ch}
-.hero p.lead{font-size:18.5px;color:#cfdcf0;max-width:62ch}
-.hero .btn{margin-top:26px}
-.agencies{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.agencies a{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border-radius:999px;border:1px solid rgba(169,208,255,.28);background:rgba(255,255,255,.05);font:500 13.5px/1.2 Montserrat,sans-serif;color:#dce8f8}
-.agencies b{color:#fff}.pin{color:var(--orange)}
-main{padding:56px 0 20px}
-.content{max-width:760px}
-.content h2{font-size:clamp(22px,2.6vw,29px);margin:38px 0 14px;color:var(--navy)}
-.content p{margin:0 0 14px;color:#2b3550}
-.content ul,.content ol{margin:6px 0 14px 0;padding-left:0;list-style:none;counter-reset:s}
-.content li{position:relative;padding:10px 14px 10px 46px;margin-bottom:8px;background:var(--soft);border:1px solid var(--line);border-radius:12px}
-.content ul li::before{content:"";position:absolute;left:16px;top:17px;width:14px;height:14px;border-radius:50%;background:var(--orange);box-shadow:inset 0 0 0 4px #ffd9c7}
-.content ol li{counter-increment:s}.content ol li::before{content:counter(s);position:absolute;left:12px;top:9px;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font:700 13px/24px Montserrat,sans-serif;text-align:center}
-.faq{margin-top:46px}.faq h2{margin-top:0}
-.faq details{border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px;background:#fff}
-.faq summary{cursor:pointer;font:600 16.5px/1.4 Montserrat,sans-serif;color:var(--navy)}
-.faq details p{margin:10px 0 0;color:#2b3550}
-.related{margin-top:46px}.related h2{font-size:24px;margin-bottom:14px;color:var(--navy)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cards a{display:block;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--soft);font:600 16px/1.35 Montserrat,sans-serif;color:var(--navy)}
-.cards a span{display:block;margin-top:6px;font:400 14px/1.5 Inter,sans-serif;color:var(--muted)}
-.cards a:hover{border-color:var(--blue)}
-.cta{margin:56px 0 0;background:linear-gradient(135deg,#14306a,#0b1226);color:#fff;border-radius:22px;padding:38px 36px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.cta h2{font-size:26px;margin-bottom:8px}.cta p{color:#cfdcf0;max-width:56ch}
-footer{margin-top:64px;background:#070b18;color:#aab9d7;padding:46px 0 28px;font-size:15px}
-.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
-footer h4{color:#fff;font-size:15px;margin-bottom:12px}
-footer ul{list-style:none}footer li{margin-bottom:8px}footer a:hover{color:#fff}
-footer address{font-style:normal;line-height:1.6}footer address b{color:#fff}
-.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:28px;padding-top:18px;font-size:13.5px}
-@media(max-width:900px){.menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;background:#070b18;padding:14px 20px 22px}.menu.open{display:flex}.menu a{font-size:16px;padding:14px}.menu .lang{margin:10px 0 0 14px;width:max-content}.burger{display:block}.cards{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}.cta{padding:30px 22px}}
+.menu a{padding:10px 16px;border-radius:999px;font:500 14px/1 Montserrat,sans-serif;letter-spacing:.06em;color:rgba(255,255,255,.85);transition:color .2s,background .2s}
+.menu a:not(.btn):hover{color:#fff;background:rgba(255,255,255,.08)}
+.menu .btn{padding:12px 20px;margin-left:10px;color:#fff}
+.burger{display:none;background:none;border:0;width:44px;height:44px;border-radius:12px;color:#fff;cursor:pointer}
+.burger svg{width:26px;height:26px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;color:#fff;overflow:hidden;
+  background:radial-gradient(120% 80% at 15% 0%,#1d4c9a 0%,rgba(29,76,154,0) 55%),radial-gradient(90% 70% at 100% 100%,#163a7a 0%,rgba(22,58,122,0) 60%),linear-gradient(180deg,var(--night-2),var(--night))}
+.hero .wrap{position:relative;z-index:2;padding:150px 0 140px;display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.hero .h1{font-family:Montserrat,Inter,sans-serif;line-height:1.15;letter-spacing:-.015em;font-size:clamp(40px,5.6vw,76px);font-weight:700;margin:22px 0 22px;max-width:13ch}
+.hero .h1 .hl{background:linear-gradient(90deg,#8fc4ff,#4da3ff 50%,#cfe4ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 40px rgba(77,163,255,.35)}
+.hero p.lead{font-size:clamp(17px,1.5vw,20px);max-width:520px;color:rgba(220,230,245,.82);font-weight:300}
+.hero .eyebrow{color:var(--ice)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.hero-modes{display:flex;flex-wrap:wrap;gap:10px;margin-top:44px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(169,208,255,.22);font:500 13.5px/1 Montserrat,sans-serif;letter-spacing:.04em;color:#dce8f8}
+.chip svg{width:17px;height:17px;color:var(--glow)}
+.map{position:relative;align-self:center}
+.map img{width:100%;filter:contrast(1.15) brightness(1.05);mix-blend-mode:screen;-webkit-mask-image:radial-gradient(ellipse 56% 54% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 56% 54% at 50% 50%,#000 62%,transparent 100%)}
+.mada{position:absolute;left:60.6%;top:74.5%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 12px 4px rgba(255,122,61,.95),0 0 40px 12px rgba(255,122,61,.45)}
+.mada::before,.mada::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,140,90,.85);animation:ping 2.6s cubic-bezier(.2,.6,.4,1) infinite}
+.mada::after{animation-delay:1.3s}
+@keyframes ping{from{transform:scale(1);opacity:1}to{transform:scale(5.5);opacity:0}}
+.mada-label{position:absolute;left:calc(60.6% + 18px);top:calc(74.5% - 10px);font:600 11px/1 Montserrat,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#fff;background:rgba(7,11,24,.6);border:1px solid rgba(255,122,61,.55);padding:6px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+.streak{position:absolute;left:0;right:0;bottom:0;height:1px;z-index:2;background:linear-gradient(90deg,transparent,rgba(120,185,255,.9) 50%,transparent)}
+.streak::after{content:"";position:absolute;left:50%;top:-3px;width:240px;height:7px;margin-left:-120px;border-radius:50%;background:radial-gradient(closest-side,rgba(180,220,255,.95),transparent);filter:blur(2px)}
+.scroll-cue{position:absolute;left:50%;bottom:90px;z-index:3;transform:translateX(-50%);width:26px;height:42px;border:1.5px solid rgba(255,255,255,.5);border-radius:20px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+/* ---------- Stats ---------- */
+.stats{position:relative;z-index:3;margin-top:-64px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border-radius:22px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.stat{padding:30px 28px;border-right:1px solid var(--line);position:relative}
+.stat:last-child{border-right:0}
+.stat b{display:block;font:700 clamp(34px,3.6vw,46px)/1 Montserrat,sans-serif;color:var(--navy);letter-spacing:-.02em}
+.stat b span{color:var(--orange)}
+.stat small{display:block;margin-top:8px;color:var(--muted);font-size:15px}
+
+/* ---------- Ticker ---------- */
+.ticker-wrap{overflow:hidden;padding:70px 0 20px}
+.ticker{background:linear-gradient(90deg,var(--night),var(--deep) 50%,var(--night));color:#e6eefa;transform:rotate(-1.2deg);margin-inline:-20px;border-block:1px solid rgba(120,185,255,.35);box-shadow:0 0 40px -10px rgba(77,163,255,.6)}
+.ticker-track{display:flex;gap:48px;padding:17px 0;white-space:nowrap;width:max-content;animation:tick 34s linear infinite;font:500 17px/1 Montserrat,sans-serif;text-transform:uppercase;letter-spacing:.28em}
+.ticker-track span{display:inline-flex;align-items:center;gap:48px}
+.ticker-track span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px 2px rgba(255,122,61,.8)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:110px 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(30px,3.8vw,48px);font-weight:700;color:var(--navy);margin-top:16px;max-width:18ch}
+.sec-head p{max-width:520px;color:var(--muted)}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.services-grid>*,.steps>*,.foot-grid>*{min-width:0}
+.svc{position:relative;border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.svc:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(36,104,214,.55);border-color:#c9dbf5}
+.svc-img{aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--deep));position:relative}
+.svc-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,11,24,.45))}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.svc:hover .svc-img img{transform:scale(1.07)}
+.svc-ico{position:absolute;top:16px;left:16px;z-index:1;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(7,11,24,.6);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(169,208,255,.4);box-shadow:0 0 20px -4px rgba(77,163,255,.7)}
+.svc-ico svg{width:24px;height:24px}
+.svc-body{padding:22px 22px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.svc h3{font-size:19px;font-weight:700;color:var(--navy)}
+.svc p{font-size:15.5px;color:var(--muted)}
+.svc .more{margin-top:auto;padding-top:8px;font:600 13.5px/1 Montserrat,sans-serif;letter-spacing:.04em;color:var(--orange-2);display:inline-flex;gap:6px;align-items:center}
+
+
+/* Agréments */
+.agree-line{display:inline-flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:22px;font:500 13.5px/1.3 Montserrat,sans-serif;color:#dce8f8;letter-spacing:.03em}
+.agree-line svg{width:20px;height:20px;color:var(--orange)}
+.agree-line b{font-weight:700;letter-spacing:.14em;padding:5px 10px;border-radius:8px;border:1px solid rgba(255,122,61,.55);color:#fff;background:rgba(255,122,61,.12)}
+.agree-line:hover span{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.agr{padding-top:0}
+.agr-box{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:center;padding:52px;border-radius:28px;background:radial-gradient(70% 90% at 0% 0%,#1f4f9f,rgba(31,79,159,0) 60%),linear-gradient(150deg,var(--navy),var(--night));color:#fff;position:relative;overflow:hidden;border:1px solid rgba(169,208,255,.18)}
+.agr-box::after{content:"";position:absolute;right:-120px;bottom:-160px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.22),transparent 70%)}
+.agr-intro .eyebrow{color:var(--ice)}
+.agr-intro h2{font-size:clamp(26px,2.8vw,36px);font-weight:700;margin:16px 0 14px}
+.agr-intro p{color:rgba(220,230,245,.78)}
+.agr-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:1}
+.agr-card{padding:28px 26px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(169,208,255,.18);transition:transform .3s,border-color .3s,box-shadow .3s}
+.agr-card:hover{transform:translateY(-4px);border-color:rgba(255,122,61,.55);box-shadow:0 0 50px -20px rgba(255,122,61,.7)}
+.agr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.agr-ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#5fb0ff,#1d56c4);box-shadow:0 0 26px -6px rgba(77,163,255,.8)}
+.agr-ico svg{width:24px;height:24px}
+.agr-code{font:700 40px/1 Montserrat,sans-serif;letter-spacing:.06em;background:var(--silver);-webkit-background-clip:text;background-clip:text;color:transparent}
+.agr-card h3{font-size:18px;font-weight:600;margin-bottom:10px}
+.agr-card h3::after{content:"";display:block;width:28px;height:2px;margin-top:10px;background:var(--orange);border-radius:2px}
+.agr-card p{font-size:15px;color:rgba(220,230,245,.75)}
+@media (max-width:1024px){.agr-box{grid-template-columns:1fr;padding:40px 32px}}
+@media (max-width:560px){.agr-cards{grid-template-columns:1fr}.agr-box{padding:30px 22px}}
+
+/* Why (sombre) */
+.why{background:linear-gradient(180deg,var(--night-2),var(--night));color:#fff;position:relative;overflow:hidden}
+.why .sec-head h2{color:#fff}
+.why .sec-head p{color:rgba(220,230,245,.72)}
+.why .eyebrow{color:var(--ice)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:1}
+.why-card{padding:34px 30px;border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(169,208,255,.16);transition:border-color .3s,transform .3s,box-shadow .3s}
+.why-card:hover{border-color:rgba(120,185,255,.55);transform:translateY(-4px);box-shadow:0 0 50px -18px rgba(77,163,255,.8)}
+.why-num{font:600 13px/1 Montserrat,sans-serif;color:var(--orange);letter-spacing:.3em}
+.why-card h3{font-size:22px;font-weight:600;margin:16px 0 12px}
+.why-card p{color:rgba(220,230,245,.75);font-size:16px}
+.why-ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#5fb0ff,#1d56c4);color:#fff;margin-bottom:22px;box-shadow:0 0 30px -6px rgba(77,163,255,.8)}
+.why-ico svg{width:26px;height:26px}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s}
+.step{position:relative;padding:28px 24px;border-radius:var(--r);background:var(--soft);border:1px solid var(--line)}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font:700 44px/1 Montserrat,sans-serif;background:linear-gradient(180deg,#9fb0c6,#2468d6);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:16px}
+.step h4{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.step p{font-size:15.5px;color:var(--muted)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+.about-visual{position:relative}
+.about-visual .main{border-radius:24px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:var(--shadow);background:var(--navy)}
+.about-badge{position:absolute;right:-24px;bottom:40px;background:linear-gradient(150deg,var(--deep),var(--night));color:#fff;border-radius:20px;padding:22px 26px;box-shadow:0 20px 50px -16px rgba(36,104,214,.7);border:1px solid rgba(169,208,255,.3);max-width:230px}
+.about-badge small{display:block;font:500 11px/1 Montserrat,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.about-badge b{display:block;font:700 44px/1 Montserrat,sans-serif}
+.about-badge span{font-size:14px;color:rgba(220,230,245,.8)}
+.about-visual .float{position:absolute;left:-28px;top:36px;width:42%;border-radius:18px;border:6px solid #fff;box-shadow:var(--shadow);aspect-ratio:1;object-fit:cover;background:var(--deep)}
+.about-text h2{font-size:clamp(30px,3.8vw,46px);font-weight:700;color:var(--navy);margin:16px 0 22px}
+.about-text p{color:var(--muted);margin-bottom:16px}
+.about-text p strong{color:var(--ink)}
+.offices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.office{display:flex;gap:12px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:14px}
+.office svg{width:24px;height:24px;color:var(--orange);flex:none}
+.office b{display:block;font:600 16px/1.2 Montserrat,sans-serif;color:var(--navy)}
+.office small{color:var(--muted);font-size:13.5px}
+
+/* Mission / Vision */
+.mv{background:var(--soft)}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.mv-card{padding:44px 40px;border-radius:24px;background:#fff;border:1px solid var(--line);position:relative;overflow:hidden}
+.mv-card.alt{background:radial-gradient(90% 90% at 0% 0%,#2a5fb8,rgba(42,95,184,0) 60%),linear-gradient(150deg,var(--navy),var(--night));color:#fff;border:1px solid rgba(169,208,255,.2)}
+.mv-card .tag{font:600 12px/1 Montserrat,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--blue)}
+.mv-card.alt .tag{color:var(--ice)}
+.mv-card h3{font-size:clamp(23px,2.3vw,28px);font-weight:700;margin:14px 0 16px;color:var(--navy)}
+.mv-card.alt h3{color:#fff}
+.mv-card p{color:var(--muted)}
+.mv-card.alt p{color:rgba(220,230,245,.85)}
+.mv-card p + p{margin-top:12px}
+.values{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.values span{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(169,208,255,.25);font:500 13.5px/1 Montserrat,sans-serif}
+
+/* Quote (sombre + bokeh) */
+.quote{position:relative;color:#fff;overflow:hidden;background:radial-gradient(80% 90% at 100% 0%,#1d4c9a,rgba(29,76,154,0) 60%),linear-gradient(180deg,var(--night),var(--night-2))}
+.quote-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.quote h2{font-size:clamp(32px,4.2vw,54px);font-weight:700;margin:16px 0 18px}
+.quote .eyebrow{color:var(--ice)}
+.quote p.lead{color:rgba(220,230,245,.8);max-width:460px;font-weight:300}
+.contact-list{margin-top:32px;display:grid;gap:14px}
+.contact-list a{display:flex;gap:14px;align-items:center;font:600 17px/1.3 Montserrat,sans-serif}
+.contact-list a:hover{color:var(--ice)}
+.contact-list i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(169,208,255,.25);flex:none;color:var(--glow)}
+.contact-list svg{width:22px;height:22px}
+form.card{background:#fff;color:var(--ink);border-radius:24px;padding:36px;box-shadow:0 30px 80px -20px rgba(36,104,214,.45)}
+form.card h3{font-size:23px;font-weight:700;color:var(--navy);margin-bottom:6px}
+form.card > p{color:var(--muted);font-size:15px;margin-bottom:22px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font:600 13px/1 Montserrat,sans-serif;color:var(--navy)}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;background:var(--soft);color:var(--ink);transition:border .2s,background .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(36,104,214,.12)}
+.field textarea{min-height:96px;resize:vertical}
+.modes{display:flex;flex-wrap:wrap;gap:8px}
+.modes label{cursor:pointer}
+.modes input{position:absolute;opacity:0}
+.modes span{display:inline-block;padding:10px 14px;border-radius:999px;border:1.5px solid var(--line);font:500 14px/1 Montserrat,sans-serif;transition:all .2s}
+.modes input:checked + span{background:var(--navy);border-color:var(--orange);color:#fff;box-shadow:0 0 0 2px rgba(255,122,61,.25)}
+.modes input:focus-visible + span{outline:2px solid var(--blue);outline-offset:2px}
+form.card .btn{width:100%;justify-content:center;margin-top:8px}
+.form-err{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#fdecea;color:#9b2c1f;font-size:15px}.form-err a{color:inherit;text-decoration:underline}.form-ok{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:#e8f8ee;color:#1d6b3b;font-size:15px}
+
+/* Footer */
+footer{background:var(--night);color:rgba(220,230,245,.7);padding:70px 0 30px;font-size:15.5px;border-top:1px solid rgba(169,208,255,.12)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:40px}
+footer h4{color:#fff;font-size:13px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;margin-bottom:18px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a:hover{color:var(--ice)}
+.foot-logo img{height:56px;margin-bottom:18px}
+.news{display:flex;gap:8px;margin-top:6px}
+.news input{flex:1;width:100%;min-width:0;padding:12px 14px;border-radius:999px;border:1px solid rgba(169,208,255,.25);background:rgba(255,255,255,.04);color:#fff;font:inherit}
+.news input::placeholder{color:rgba(220,230,245,.45)}
+.news button{padding:12px 18px;border-radius:999px;border:0;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font:600 14px/1 Montserrat,sans-serif;cursor:pointer}
+.foot-bottom{margin-top:50px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px}
+
+/* Bouton d'appel flottant */
+.fab{position:fixed;right:20px;bottom:20px;z-index:40;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.15),0 12px 34px -8px rgba(255,122,61,.85);transition:transform .2s}
+.fab:hover{transform:scale(1.08)}
+.fab svg{width:25px;height:25px}
+
+/* Apparition */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* Responsive */
+@media (max-width:1024px){
+  .hero .wrap{grid-template-columns:1fr;padding-bottom:150px}
+  .map{max-width:640px;margin-top:-10px}
+  .services-grid,.steps{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr}
+  .about-grid,.quote-grid{grid-template-columns:1fr;gap:50px}
+  .about-visual{max-width:560px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:820px){
+  .menu{position:fixed;inset:0 0 auto 0;flex-direction:column;align-items:stretch;background:rgba(7,11,24,.97);backdrop-filter:blur(14px);padding:90px 20px 28px;gap:4px;box-shadow:var(--shadow);transform:translateY(-110%);transition:transform .35s}
+  .menu.open{transform:none}
+  .menu a{font-size:17px;padding:16px}
+  .menu .btn{margin:10px 0 0;justify-content:center}
+  .burger{display:grid;place-items:center;position:relative;z-index:60}
+  .mv-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .scroll-cue{display:none}
+  .hero .wrap{padding-top:120px}
+  .logo img{height:38px}
+  section{padding:80px 0}
+  .services-grid,.steps,.row,.offices,.foot-grid{grid-template-columns:1fr}
+  .about-badge{right:10px}
+  .about-visual .float{left:-6px}
+  form.card{padding:26px 20px}
+  .mv-card{padding:32px 24px}
+  .stat{padding:20px 12px;text-align:center}
+  .stat small{font-size:13px;line-height:1.35}
+  .mada-label{display:none}
+  .eyebrow{letter-spacing:.18em;font-size:11.5px}
+  .hero .wrap{padding-bottom:120px}
+}
+/* H1 SEO dans le hero (garde le style « eyebrow ») */
+.hero h1.eyebrow{font-size:13px;line-height:1.4;max-width:none;margin:0}
+/* Expertise */
+.expertise{background:var(--soft)}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.exp-grid>*{min-width:0}
+.exp-card{padding:30px 28px;border-radius:var(--r);background:#fff;border:1px solid var(--line)}
+.exp-card h3{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.exp-card p{font-size:15.5px;color:var(--muted)}
+.exp-card p strong{color:var(--ink)}
+/* FAQ */
+.faq-list{display:grid;gap:12px;max-width:900px}
+.faq-list details{border:1px solid var(--line);border-radius:16px;background:#fff;padding:0 24px}
+.faq-list summary{cursor:pointer;list-style:none;padding:20px 30px 20px 0;position:relative;font:600 17px/1.4 Montserrat,sans-serif;color:var(--navy)}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:24px;color:var(--orange-2)}
+.faq-list details[open] summary::after{content:"−"}
+.faq-list details p{padding:0 0 20px;color:var(--muted)}
+.foot-nap{font-style:normal;line-height:1.6}
+@media (max-width:1024px){.exp-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.hero h1.eyebrow{font-size:11.5px}.faq-list details{padding:0 18px}.faq-list summary{font-size:16px}}
+.menu .lang{display:flex;align-items:center;gap:2px;margin-left:8px;padding:3px;border:1px solid rgba(255,255,255,.18);border-radius:999px}.menu .lang a{padding:7px 10px;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.6)}.menu .lang a.on{color:#fff;background:rgba(255,255,255,.14)}@media (max-width:900px){.menu .lang{margin:12px 0 0 16px;width:max-content}.menu .lang a{font-size:15px;padding:10px 18px}}
+.agencies-line{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.agencies-line a{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;border:1px solid rgba(169,208,255,.28);background:rgba(255,255,255,.05);font:500 13.5px/1.2 Montserrat,sans-serif;color:#dce8f8}.agencies-line a:hover{background:rgba(255,255,255,.1)}.agencies-line svg{width:16px;height:16px;color:var(--orange)}.agencies-line b{color:#fff;font-weight:700}.office small{display:block;line-height:1.4}.foot-nap b{color:#fff}.contact-list a span{font-weight:500;color:#dce8f8}.contact-list a span b{font-weight:700;color:#fff}
+.xp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.xp-grid a{display:block;padding:22px 22px 20px;border:1px solid var(--line);border-radius:18px;background:var(--soft);transition:border-color .2s,transform .2s}.xp-grid a:hover{border-color:var(--blue);transform:translateY(-2px)}.xp-grid b{display:block;font:600 17px/1.3 Montserrat,sans-serif;color:var(--navy);margin-bottom:6px}.xp-grid span{display:block;font-size:14.5px;line-height:1.5;color:var(--muted)}@media(max-width:1000px){.xp-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.xp-grid{grid-template-columns:1fr}}
+
+
+.sp-hero{position:relative;color:#fff;overflow:hidden;background:radial-gradient(1000px 500px at 12% 0%,#1d3f8f 0%,transparent 60%),linear-gradient(180deg,#0b1226,#070b18);padding:150px 0 80px}
+.sp-hero .eyebrow{color:var(--ice)}
+.sp-crumbs{font-size:13.5px;color:rgba(220,232,248,.7);margin-bottom:22px}.sp-crumbs a{text-decoration:underline;text-underline-offset:3px}
+.sp-hero h1{font-size:clamp(32px,4.6vw,56px);font-weight:700;margin:18px 0 20px;max-width:20ch;line-height:1.12}
+.sp-hero .lead{font-size:clamp(17px,1.5vw,19.5px);color:rgba(220,230,245,.85);max-width:64ch;font-weight:300}
+.sp-hero .agencies-line{margin-top:24px}.sp-hero .btn{margin-top:30px}
+section.sp-sec{padding:80px 0 0}
+.sp-content{max-width:820px}
+.sp-content h2{font-size:clamp(24px,2.8vw,34px);font-weight:700;margin:44px 0 16px;color:var(--navy)}
+.sp-content h2:first-child{margin-top:0}
+.sp-content p{margin:0 0 16px;color:#2b3550}
+.sp-content ul,.sp-content ol{margin:6px 0 16px;padding-left:0;list-style:none;counter-reset:s}
+.sp-content li{position:relative;padding:12px 16px 12px 48px;margin-bottom:9px;background:var(--soft);border:1px solid var(--line);border-radius:14px;color:#2b3550}
+.sp-content ul li::before{content:"";position:absolute;left:17px;top:19px;width:14px;height:14px;border-radius:50%;background:var(--orange);box-shadow:inset 0 0 0 4px #ffd9c7}
+.sp-content ol li{counter-increment:s}.sp-content ol li::before{content:counter(s);position:absolute;left:13px;top:11px;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font:700 13px/24px Montserrat,sans-serif;text-align:center}
+.sp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sp-cards a{display:block;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--soft);font:600 17px/1.35 Montserrat,sans-serif;color:var(--navy);transition:border-color .2s,transform .2s}
+.sp-cards a span{display:block;margin-top:8px;font:400 14.5px/1.55 Inter,sans-serif;color:var(--muted)}
+.sp-cards a:hover{border-color:var(--blue);transform:translateY(-2px)}
+.sp-cta{margin:80px auto 90px;background:linear-gradient(135deg,#14306a,#0b1226);color:#fff;border-radius:24px;padding:44px 40px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.sp-cta h2{font-size:clamp(24px,2.6vw,32px);margin-bottom:10px}.sp-cta p{color:rgba(220,230,245,.82);max-width:58ch}
+@media(max-width:900px){.sp-cards{grid-template-columns:1fr}.sp-hero{padding:120px 0 60px}.sp-cta{padding:32px 24px}section.sp-sec{padding-top:60px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://telocargoservices.com/en/"}, {"@type": "ListItem", "position": 2, "name": "Air consolidation", "item": "https://telocargoservices.com/en/air-consolidation-madagascar/"}]}, {"@type": "FAQPage", "@id": "https://telocargoservices.com/en/air-consolidation-madagascar/#faq", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "What is a HAWB?", "acceptedAnswer": {"@type": "Answer", "text": "The HAWB (House Air Waybill) is the air waybill issued for each shipper inside a consolidated shipment covered by a MAWB (Master Air Waybill)."}}, {"@type": "Question", "name": "Do you also handle ocean freight?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through our Toamasina office: groupage (LCL) and full containers (FCL)."}}, {"@type": "Question", "name": "How can I get your breakdown rates?", "acceptedAnswer": {"@type": "Answer", "text": "Email sales@telocargoservices.com with your traffic profile (origins, volumes, frequency)."}}]}, {"@type": "Service", "name": "Air consolidation", "description": "Forwarders: entrust your air consolidations to Madagascar to TCS. Bonded receipt at Ivato (TNR), breakdown per HAWB, customs clearance and delivery.", "url": "https://telocargoservices.com/en/air-consolidation-madagascar/", "inLanguage": "en", "provider": {"@id": "https://telocargoservices.com/#organisation"}, "areaServed": {"@type": "Country", "name": "Madagascar"}}]}</script>
 </head>
 <body>
-<header><div class="wrap nav">
-<a class="logo" href="/en/" aria-label="Telo Cargo Services"><img src="/assets/logo-tcs.png" alt="Telo Cargo Services" width="84" height="44"></a>
-<button class="burger" aria-label="Open menu" onclick="document.getElementById('menu').classList.toggle('open')">&#9776;</button>
+<svg aria-hidden="true" height="0" style="position:absolute" width="0">
+<symbol fill="none" id="i-ship" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1s1.2 1 2.5 1c2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M19.4 19.6 22 12H2l2.8 7.4"></path><path d="M12 2v10M6 12V7h12v5"></path></symbol>
+<symbol fill="none" id="i-plane" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></symbol>
+<symbol fill="none" id="i-truck" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></symbol>
+<symbol fill="none" id="i-doc" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"></path><path d="M14 2v5h6"></path><path d="m9 15 2 2 4-4"></path></symbol>
+<symbol fill="none" id="i-pin" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></symbol>
+<symbol fill="none" id="i-phone" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></symbol>
+<symbol fill="none" id="i-mail" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-10 6L2 7"></path></symbol>
+<symbol fill="none" id="i-arrow" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+<symbol fill="none" id="i-compass" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"></path></symbol>
+<symbol fill="none" id="i-puzzle" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 3v3a2 2 0 1 0 4 0V3h3a2 2 0 0 1 2 2v3h-3a2 2 0 1 0 0 4h3v7a2 2 0 0 1-2 2h-7v-3a2 2 0 1 0-4 0v3H5a2 2 0 0 1-2-2v-7h3a2 2 0 1 0 0-4H3V5a2 2 0 0 1 2-2z"></path></symbol>
+<symbol fill="none" id="i-radar" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M19.07 4.93A10 10 0 1 0 22 12"></path><path d="M16.24 7.76A6 6 0 1 0 18 12"></path><circle cx="12" cy="12" r="2"></circle><path d="m13.4 10.6 5.7-5.7"></path></symbol>
+<symbol fill="none" id="i-shield" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></symbol>
+<symbol fill="none" id="i-warehouse" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35a2 2 0 0 1 1.26-1.86l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z"></path><path d="M6 18h12M6 14h12"></path><path d="M6 10h12v12H6z"></path></symbol>
+<symbol fill="none" id="i-menu" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+<symbol fill="none" id="i-close" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"></path></symbol>
+</svg>
+<header id="top">
+<div class="wrap nav">
+<a aria-label="Telo Cargo Services — home" class="logo" href="/en/#accueil">
+<img alt="Telo Cargo Services — freight forwarder Madagascar" src="/assets/logo-tcs-site.png"/>
+</a>
+<button aria-expanded="false" aria-label="Open menu" class="burger"><svg><use href="#i-menu"></use></svg></button>
 <ul class="menu" id="menu">
-<li><a href="/en/">Home</a></li>
+<li><a href="/en/#accueil">Home</a></li>
 <li><a href="/en/#services">Services</a></li>
-<li><a class="btn" href="/en/#devis">Get a quote</a></li>
-<li class="lang"><a href="/groupage-aerien-madagascar/" hreflang="fr" lang="fr" data-lang="fr">FR</a><a href="/en/air-consolidation-madagascar/" hreflang="en" lang="en" data-lang="en" class="on">EN</a></li>
-</ul></div></header>
-<section class="hero"><div class="wrap">
-<nav class="crumbs" aria-label="breadcrumb"><a href="/en/">Home</a> › Air consolidation</nav>
+<li><a href="/en/#apropos">About</a></li>
+<li><a href="/en/#faq">FAQ</a></li>
+<li><a class="btn btn-primary" href="/en/#devis">Get a quote</a></li>
+<li class="lang"><a href="/groupage-aerien-madagascar/" hreflang="fr" lang="fr" data-lang="fr" aria-label="Français">FR</a><a href="/en/air-consolidation-madagascar/" hreflang="en" lang="en" data-lang="en" aria-label="English" class="on">EN</a></li>
+</ul>
+</div>
+</header>
+<section class="sp-hero"><div class="wrap">
+<nav class="sp-crumbs" aria-label="breadcrumb"><a href="/en/">Home</a> › Air consolidation</nav>
 <span class="eyebrow">For freight forwarders</span>
 <h1>Air consolidation to Madagascar: your breakdown agent at Ivato</h1>
 <p class="lead">Are you a forwarder in Europe, Asia, the Middle East or Africa shipping consolidations to Madagascar? Telo Cargo Services is your destination agent: we receive your MAWB under bond in our MAD at Ivato, break it down per HAWB and deliver to each of your consignees.</p>
-<div class="agencies"><a href="https://www.google.com/maps/search/?api=1&query=Rue+Joseph+Raseta+Mamory+Ivato+Antananarivo" target="_blank" rel="noopener"><span class="pin">●</span><span><b>Antananarivo</b> · Mamory Ivato</span></a><a href="https://www.google.com/maps/search/?api=1&query=Rue+du+Commerce+Ampasimazava+Toamasina" target="_blank" rel="noopener"><span class="pin">●</span><span><b>Toamasina</b> · Ampasimazava</span></a></div>
-<a class="btn" href="/en/#devis">Request a quote →</a>
+<div class="agencies-line"><a href="https://www.google.com/maps/search/?api=1&amp;query=Rue+Joseph+Raseta+Mamory+Ivato+Antananarivo" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span><b>Antananarivo</b> · Mamory Ivato</span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Rue+du+Commerce+Ampasimazava+Toamasina" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span><b>Toamasina</b> · Ampasimazava</span></a></div>
+<a class="btn btn-primary" href="/en/#devis">Request a quote →</a>
 </div></section>
-<main class="wrap">
-<article class="content"><h2>The process</h2><ol><li>You consolidate your shipments under one MAWB to Antananarivo (TNR)</li><li>We collect the cargo at Ivato and transfer it under bond to our MAD</li><li>Breakdown per HAWB and clearance of each shipment by our licensed customs broker (CAD)</li><li>Delivery to each consignee in Antananarivo, Toamasina and island-wide</li></ol><h2>Why work with TCS</h2><ul><li>CAD and MAD licences issued by Madagascar Customs</li><li>Bonded warehouse at Ivato, right next to the runway</li><li>Two offices: Antananarivo (Mamory Ivato) and Toamasina (Ampasimazava)</li><li>Over 50 years of combined customs and transport experience in Madagascar</li><li>One contact for operations and invoicing</li></ul><h2>Groupage for Malagasy companies</h2><p>Do you import small volumes regularly? Air groupage lets you share a shipment with other customers and pay for actual weight, without the minimum charge of a standalone shipment.</p></article>
-<section class="faq content" id="faq"><h2>Frequently asked questions</h2><details><summary>What is a HAWB?</summary><p>The HAWB (House Air Waybill) is the air waybill issued for each shipper inside a consolidated shipment covered by a MAWB (Master Air Waybill).</p></details><details><summary>Do you also handle ocean freight?</summary><p>Yes, through our Toamasina office: groupage (LCL) and full containers (FCL).</p></details><details><summary>How can I get your breakdown rates?</summary><p>Email sales@telocargoservices.com with your traffic profile (origins, volumes, frequency).</p></details></section>
-<section class="related"><h2>Read also</h2><div class="cards"><a href="/en/air-freight-madagascar/">Air freight<span>Air freight to and from Madagascar at Ivato airport (TNR): urgent shipments, on-site customs clearance in our…</span></a><a href="/en/customs-clearance-madagascar/">Customs clearance<span>Licensed customs broker (CAD) in Madagascar: import and export customs clearance in Antananarivo (Ivato) and…</span></a><a href="/en/freight-forwarder-antananarivo/">Antananarivo office<span>Freight forwarder and licensed customs broker in Antananarivo: office at Rue Joseph Raseta, Mamory Ivato,…</span></a></div></section>
-<section class="cta"><div><h2>An import or export project?</h2><p>Tell us what you need: our team will reply with a solution suited to your goods, timeline and budget.</p></div><a class="btn" href="/en/#devis">Request a quote →</a></section>
-</main>
-<footer><div class="wrap">
-<div class="fgrid">
-<div><img src="/assets/logo-tcs.png" alt="Telo Cargo Services" width="96" height="50" style="margin-bottom:12px"><p>Freight forwarder and licensed customs broker (CAD) in Madagascar, holder of the MAD licence.</p>
-<p style="margin-top:12px"><a href="tel:+261341131104">+261 34 11 311 04</a><br><a href="mailto:sales@telocargoservices.com">sales@telocargoservices.com</a><br>Mon–Fri: 8 am – 5 pm</p></div>
-<div><h4>Our offices</h4><address><b>Antananarivo office</b><br><a href="https://www.google.com/maps/search/?api=1&query=Rue+Joseph+Raseta+Mamory+Ivato+Antananarivo" target="_blank" rel="noopener">Rue Joseph Raseta, Mamory Ivato<br>Antananarivo, Madagascar</a><br><br><b>Toamasina office</b><br><a href="https://www.google.com/maps/search/?api=1&query=Rue+du+Commerce+Ampasimazava+Toamasina" target="_blank" rel="noopener">Rue du Commerce, Ampasimazava<br>Toamasina, Madagascar</a></address></div>
-<div><h4>Our expertise</h4><ul><li><a href="/en/customs-clearance-madagascar/">Customs clearance</a></li><li><a href="/en/ocean-freight-madagascar/">Ocean freight</a></li><li><a href="/en/air-freight-madagascar/">Air freight</a></li><li><a href="/en/air-consolidation-madagascar/">Air consolidation</a></li><li><a href="/en/freight-forwarder-antananarivo/">Antananarivo office</a></li><li><a href="/en/freight-forwarder-toamasina/">Toamasina office</a></li><li><a href="/en/guide-importing-to-madagascar/">Guide: importing</a></li><li><a href="/en/guide-exporting-from-madagascar/">Guide: exporting</a></li></ul></div>
+<section class="sp-sec"><div class="wrap"><article class="sp-content"><h2>The process</h2><ol><li>You consolidate your shipments under one MAWB to Antananarivo (TNR)</li><li>We collect the cargo at Ivato and transfer it under bond to our MAD</li><li>Breakdown per HAWB and clearance of each shipment by our licensed customs broker (CAD)</li><li>Delivery to each consignee in Antananarivo, Toamasina and island-wide</li></ol><h2>Why work with TCS</h2><ul><li>CAD and MAD licences issued by Madagascar Customs</li><li>Bonded warehouse at Ivato, right next to the runway</li><li>Two offices: Antananarivo (Mamory Ivato) and Toamasina (Ampasimazava)</li><li>Over 50 years of combined customs and transport experience in Madagascar</li><li>One contact for operations and invoicing</li></ul><h2>Groupage for Malagasy companies</h2><p>Do you import small volumes regularly? Air groupage lets you share a shipment with other customers and pay for actual weight, without the minimum charge of a standalone shipment.</p></article></div></section>
+<section class="sp-sec" id="faq"><div class="wrap">
+<div class="sec-head"><div><span class="eyebrow">Frequently asked questions</span><h2>Air consolidation</h2></div></div>
+<div class="faq-list"><details><summary>What is a HAWB?</summary><p>The HAWB (House Air Waybill) is the air waybill issued for each shipper inside a consolidated shipment covered by a MAWB (Master Air Waybill).</p></details><details><summary>Do you also handle ocean freight?</summary><p>Yes, through our Toamasina office: groupage (LCL) and full containers (FCL).</p></details><details><summary>How can I get your breakdown rates?</summary><p>Email sales@telocargoservices.com with your traffic profile (origins, volumes, frequency).</p></details></div></div></section>
+<section class="sp-sec"><div class="wrap">
+<div class="sec-head"><div><span class="eyebrow">Our expertise</span><h2>Read also</h2></div></div>
+<div class="sp-cards"><a href="/en/air-freight-madagascar/">Air freight<span>Air freight to and from Madagascar at Ivato airport (TNR): urgent shipments, on-site customs clearance in our…</span></a><a href="/en/customs-clearance-madagascar/">Customs clearance<span>Licensed customs broker (CAD) in Madagascar: import and export customs clearance in Antananarivo (Ivato) and…</span></a><a href="/en/freight-forwarder-antananarivo/">Antananarivo office<span>Freight forwarder and licensed customs broker in Antananarivo: office at Rue Joseph Raseta, Mamory Ivato,…</span></a></div></div></section>
+<div class="wrap"><div class="sp-cta"><div><h2>An import or export project?</h2><p>Tell us what you need: our team will reply with a solution suited to your goods, timeline and budget.</p></div><a class="btn btn-primary" href="/en/#devis">Request a quote →</a></div></div>
+<footer>
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<span class="foot-logo" style="display:inline-block"><img alt="Telo Cargo Services — freight forwarder Madagascar" src="/assets/logo-tcs-site.png"/></span>
+<p>Freight forwarder and licensed customs broker (CAD) in Madagascar. Your logistics partner between Madagascar and the world.</p>
 </div>
-<div class="copy">© 2026 Telo Cargo Services. All rights reserved.</div>
-</div></footer>
+<div>
+<h4>Navigation</h4>
+<ul><li><a href="/en/#accueil">Home</a></li><li><a href="/en/#services">Services</a></li><li><a href="/en/#expertise">Forwarding &amp; customs</a></li><li><a href="/en/#apropos">About</a></li><li><a href="/en/#faq">FAQ</a></li><li><a href="/en/#devis">Quote &amp; contact</a></li></ul>
+        <h4 style="margin-top:22px">Our expertise</h4>
+        <ul><li><a href="/en/customs-clearance-madagascar/">Customs clearance</a></li><li><a href="/en/ocean-freight-madagascar/">Ocean freight</a></li><li><a href="/en/air-freight-madagascar/">Air freight</a></li><li><a href="/en/air-consolidation-madagascar/">Air consolidation</a></li><li><a href="/en/freight-forwarder-antananarivo/">Antananarivo office</a></li><li><a href="/en/freight-forwarder-toamasina/">Toamasina office</a></li><li><a href="/en/guide-importing-to-madagascar/">Guide: importing to Madagascar</a></li><li><a href="/en/guide-exporting-from-madagascar/">Guide: exporting from Madagascar</a></li></ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul><li><a href="tel:+261341131104">+261 34 11 311 04</a></li><li><a href="mailto:sales@telocargoservices.com">sales@telocargoservices.com</a></li><li><address class="foot-nap">Telo Cargo Services<br/><b>Antananarivo office</b><br/>Rue Joseph Raseta, Mamory Ivato<br/>Antananarivo, Madagascar<br/><b>Toamasina office</b><br/>Rue du Commerce, Ampasimazava<br/>Toamasina, Madagascar</address></li><li>Mon–Fri: 8 am – 5 pm</li><li><a href="https://www.facebook.com/tcsmada/" rel="noopener" target="_blank">Facebook</a> · <a href="https://www.linkedin.com/company/29036636/" rel="noopener" target="_blank">LinkedIn</a></li></ul>
+</div>
+<div>
+<h4>Subscribe to our newsletter</h4>
+<form class="news" onsubmit="event.preventDefault();this.innerHTML='&lt;p&gt;Merci, vous êtes inscrit·e !&lt;/p&gt;'">
+<input aria-label="Your email" placeholder="Enter your email" required="" type="email"/>
+<button type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="foot-bottom">
+<span>© <span id="yr">2026</span> Telo Cargo Services. All rights reserved.</span>
+<a href="#top">Back to top ↑</a>
+</div>
+</div>
+</footer>
+<a aria-label="Call Telo Cargo Services" class="fab" href="tel:+261341131104"><svg><use href="#i-phone"></use></svg></a>
+<script>
+const header=document.getElementById('top');const onScroll=()=>header.classList.toggle('scrolled',scrollY>40);addEventListener('scroll',onScroll,{passive:true});onScroll();
+const burger=document.querySelector('.burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const open=menu.classList.toggle('open');burger.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);burger.querySelector('use').setAttribute('href',open?'#i-close':'#i-menu');});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(menu.classList.contains('open'))burger.click()}));
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
