@@ -162,4 +162,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://telocargoservices.com/en/guide-exporting-from-madagascar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://telocargoservices.com/en/guide-exporting-from-madagascar/"/>
   </url>
+  <url>
+    <loc>https://telocargoservices.com/mentions.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
 </urlset>
