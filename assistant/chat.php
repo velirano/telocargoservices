@@ -29,11 +29,25 @@ $cfg = [
   'rate_per_15min' => 40,
   'rate_per_day'   => 300,
 ];
-foreach ([dirname(__DIR__, 2) . '/tcs-assistant-config.php', __DIR__ . '/config.local.php'] as $file) {
-  if (is_readable($file)) { $c = include $file; if (is_array($c)) $cfg = array_merge($cfg, $c); break; }
+// Emplacements possibles du fichier de configuration (le premier trouvé est utilisé)
+$candidates = [
+  'racine'    => dirname(__DIR__, 2) . '/tcs-assistant-config.php',   // recommandé : à côté de « www »
+  'www'       => dirname(__DIR__) . '/tcs-assistant-config.php',
+  'assistant' => __DIR__ . '/tcs-assistant-config.php',
+  'local'     => __DIR__ . '/config.local.php',
+];
+$diag = ['open_basedir' => ini_get('open_basedir') !== '' && ini_get('open_basedir') !== false];
+foreach ($candidates as $label => $file) {
+  $exists = @file_exists($file);
+  $diag[$label] = $exists ? (@is_readable($file) ? 'lisible' : 'illisible') : 'absent';
+  if ($exists && @is_readable($file)) {
+    $c = include $file;
+    $diag[$label] .= is_array($c) ? (!empty($c['api_key']) ? ' + cle' : ' + cle vide') : ' + format invalide';
+    if (is_array($c)) { $cfg = array_merge($cfg, $c); break; }
+  }
 }
 // Le widget vérifie que l'assistant est configuré avant de s'afficher
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['ping'])) out(200, ['ok' => true, 'ready' => $cfg['api_key'] !== '']);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['ping'])) out(200, ['ok' => true, 'ready' => $cfg['api_key'] !== ''] + (isset($_GET['diag']) ? ['diag' => $diag] : []));
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['ok' => false, 'error' => 'method']);
 if ($cfg['api_key'] === '') out(503, ['ok' => false, 'error' => 'not_configured']);
 
