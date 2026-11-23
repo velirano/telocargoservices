@@ -1,0 +1,5 @@
+# Assistant TCS : seuls widget.js et chat.php sont publics
+Options -Indexes
+<FilesMatch "^(config.*\.php|README\.md|knowledge\.md|.*\.example\.php)$">
+  Require all denied
+</FilesMatch>
